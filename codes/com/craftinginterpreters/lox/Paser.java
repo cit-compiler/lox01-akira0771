@@ -9,6 +9,14 @@ public class Paser {
     private final List<Token> tokens;
     private int current = 0;
 
+    for (TokenType type : types) {
+      if (check(type)) {
+        advance();
+        return true;
+        }
+    }
+    
+
   Parser(List<Token> tokens) {
     this.tokens = tokens;
   }
@@ -91,7 +99,7 @@ public class Paser {
     }
 
     throw error(peek(), "Expect expression.");
-    
+
   }
 
 
@@ -102,7 +110,7 @@ public class Paser {
         return true;
         }
     }
-}
+  }
 
     private Token consume(TokenType type, String message) {
     if (check(type)) return advance();
